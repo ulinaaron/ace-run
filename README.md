@@ -1,16 +1,15 @@
-=== Genesis Sample Theme ===
+# Ace Run - Starter Child Theme
 
-Github project link: https://github.com/copyblogger/genesis-sample
-
-
-=== Installation Instructions ===
-
-1. Upload the Genesis Sample theme folder via FTP to your wp-content/themes/ directory. (The Genesis parent theme needs to be in the wp-content/themes/ directory as well.)
-2. Go to your WordPress dashboard and select Appearance.
-3. Activate the Genesis Sample theme.
-4. Inside your WordPress dashboard, go to Genesis > Theme Settings and configure them to your liking.
+This is a utility starter theme for kicking off a project. It uses Gulp to build and watch files.
 
 
-=== Theme Support ===
+## Installation Instructions
 
-Please visit http://my.studiopress.com/help/ for theme support.
+#### Dependencies
+
+- Gulp
+- Bower
+
+##### Find & Replace
+
+Unique functions and classes are prefixed as "ace-" or "ace_" throughout this theme. You should go throw and replace these instances to reflect the project you are working on,
