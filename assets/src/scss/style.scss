@@ -79,6 +79,16 @@ WARNING: Compiled from /library/assets/sass/style.scss
 
 @import "utilities";
 
+// Import Bourbon
+// ---------------------------------------------
+
+@import "vendor/node-bourbon/bourbon";
+
+// Import Bourbon
+// ---------------------------------------------
+
+@import "vendor/node-neat/neat";
+
 // THEME VARIABLES
 // ---------------------------------------------
 
@@ -272,7 +282,7 @@ $fa-li-width:         (30em / 14) ;
 --------------------------------------------- */
 *,
 input[type="search"] {
-    box-sizing: border-box;
+    @include box-sizing(border-box);
 }
 
 /* Float Clearing
