@@ -8,13 +8,14 @@
     "url": "https://github.com/synapticism/wordpress-gulp-bower-sass.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "gulp npm-packages"
   },
   "author": "Alexander Synaptic",
   "license": "GNU General Public Licence 2.0",
   "main": "index.js",
   "private": true,
   "devDependencies": {
+    "browser-sync": "^1.3.0",
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "0.0.6",
     "gulp-bless": "^1.0.2",
@@ -32,6 +33,8 @@
     "gulp-uglify": "^0.2.1",
     "gulp-util": "^2.2.20",
     "merge-stream": "^0.1.5",
+    "node-bourbon": "^1.2.3",
+    "node-neat": "^1.3.0",
     "tiny-lr": "0.0.5"
   }
 }
