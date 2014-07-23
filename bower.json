@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "normalize.css": "latest",
-    "meyer-reset": "latest"
+    "animate.css": "latest",
+    "Font-Awesome": "latest"
   }
 }

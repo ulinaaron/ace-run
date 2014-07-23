@@ -7,11 +7,25 @@ define( 'CHILD_THEME_NAME', 'Ace Run Child Theme' );
 define( 'CHILD_THEME_URL', 'http://www.aaronmazade.com/' );
 define( 'CHILD_THEME_VERSION', '2.0.1' );
 
+//* Enqueue Scripts
+add_action( 'wp_enqueue_scripts', 'ar_enqueue_script' );
+function ar_enqueue_script() {
+    wp_enqueue_script( 'main', get_bloginfo( 'stylesheet_directory' ) . '/assets/js/main.min.js', array( 'jquery' ), '1.0.0' );
+}
+
 //* Enqueue Lato Google font
-add_action( 'wp_enqueue_scripts', 'genesis_sample_google_fonts' );
-function genesis_sample_google_fonts() {
+add_action( 'wp_enqueue_scripts', 'ar_load_google_fonts' );
+function ar_load_google_fonts() {
 	wp_enqueue_style( 'google-font-lato', '//fonts.googleapis.com/css?family=Lato:300,700', array(), CHILD_THEME_VERSION );
 }
+
+//* Create blue, green, orange and red color style options
+add_theme_support( 'genesis-style-selector', array(
+    'skin-info'	=> __( 'Info', 'themename' ),
+    'skin-success'	=> __( 'Success', 'themename' ),
+    'skin-warning'	=> __( 'Warning', 'themename' ),
+    'skin-alert'	=> __( 'Alert', 'themename' )
+) );
 
 //* Add HTML5 markup structure
 add_theme_support( 'html5' );
@@ -39,3 +53,28 @@ function sp_footer_creds_filter( $creds ) {
 	return $creds;
 
 }
+
+/* Functions for conditional loading
+--------------------------------------------- */
+
+//* Initialize WOW.js
+//* -------------------------------------
+//* Initialize WOW.js
+add_action('genesis_after_footer','ar_init_wowjs', 30 );
+function ar_init_wowjs() {
+	?>
+	<script>
+
+        /**
+         * WOW animate.css if transitions are supported
+         */
+        if(supportsTransitions() && window.innerWidth > 767){
+            new WOW().init({ mobile: false });
+        }
+
+    </script>
+	<?php
+}
+
+
+

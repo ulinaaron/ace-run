@@ -19,8 +19,11 @@ WARNING: Compiled from /library/assets/sass/style.scss
 
 /* Table of Contents
 
-- HTML5 Reset
+- Import Utilities
+- Theme Variables
 - Baseline Normalize
+- Import Font Awesome
+- Import Animate.css
 - Box Sizing
 - Float Clearing
 - Defaults
@@ -62,6 +65,12 @@ WARNING: Compiled from /library/assets/sass/style.scss
 - max-width: 1139px
 - max-width: 1023px
 - max-width: 767px
+- Skins
+    - Info
+    - Success
+    - Warning
+    - Alert
+- Animate.css
 
 */
 
@@ -98,7 +107,7 @@ $color-darkest: #2b303b;
 $color-body-bg: $color-light;
 $color-body-text: $color-darkest;
 
-$color-header-bg: $color-secondary;
+$color-header-bg: $color-darker;
 $color-header-text: $color-lightest;
 $color-header-subheader: $color-lighter;
 
@@ -133,11 +142,13 @@ $link-transitions: true;
 // NAVIGATION
 // -------------------------
 
+$nav-font-family: $font-family-primary;
+
 //Nav Primary
 $color-nav-link: $color-lightest;
 $color-nav-link-hover: $color-darkest;
 
-$color-nav-primary-bg: $color-darkest;
+$color-nav-primary-bg: darken($color-header-bg, 10);
 $color-nav-primary-link: $color-light;
 $color-nav-primary-link-hover: $color-secondary;
 
@@ -157,7 +168,10 @@ $color-nav-secondary-sub-bg: $color-nav-secondary-bg;
 $color-nav-secondary-sub-link: $color-nav-secondary-link;
 $color-nav-secondary-sub-link-hover: $color-nav-secondary-link-hover;
 
-$nav-font-family: $font-family-primary;
+
+// Nav Secondary
+$color-nav-header-link: $color-lightest;
+$color-nav-header-link-hover: $color-secondary;
 
 // PAGINATION
 // -------------------------
@@ -166,6 +180,13 @@ $color-pagination-button-bg: $color-darkest;
 $color-pagination-button-bg-hover: $color-alert;
 $color-pagination-button-link: $color-lightest;
 
+// TAGS (BADGES)
+// -------------------------
+
+$color-tag-bg: $color-alert;
+$color-tag-bg-hover: $color-primary;
+$color-tag-link: $color-lightest;
+$color-tag-link-hover: $color-tag-link;
 
 // FOOTER
 // -------------------------
@@ -175,7 +196,7 @@ $color-footer-widgets-bg: $color-darkest;
 $color-footer-widgets-text: $color-lighter;
 
 $color-footer-widget-link: $color-secondary;
-$color-footer-widget-link-hover: $color-secondary;
+$color-footer-widget-link-hover: $color-primary;
 
 // Copyright / Credits
 $color-footer-bg: $color-medium;
@@ -212,6 +233,17 @@ $heading-color: $color-alert;
 
 $color-wp-edit-link: $color-alert;
 
+$global-radius: 6px;
+
+// Font Awesome
+// -------------------------
+
+$fa-font-path:        "assets/fonts"; // Relative to theme root folder
+$fa-css-prefix:       fa;
+$fa-border-color:     $color-medium;
+$fa-inverse:          $color-light;
+$fa-li-width:         (30em / 14) ;
+
 // BLOCKQUOTE
 // -------------------------
 
@@ -225,6 +257,16 @@ $color-wp-edit-link: $color-alert;
 // Run 'bower update' to get the latest version.
 
 @import "base_normalize";
+
+// Import Font Awesome
+// ---------------------------------------------
+
+@import "../bower_components/Font-Awesome/scss/font-awesome";
+
+// Import Animate.css Library
+// ---------------------------------------------
+
+@import "animate";
 
 /* Box Sizing
 --------------------------------------------- */
@@ -386,40 +428,46 @@ h6 {
     margin: 0 0 1.6rem;
 }
 
-h1 {
-    &, .font-size-h1 {
-        @include rem(font-size, $font-size-huge);
-    }
+h1,
+.font-size-huge {
+    @include rem(font-size, $font-size-huge);
 }
 
-h2 {
-    &, .font-size-h2 {
-        @include rem(font-size, $font-size-xxxl);
-    }
+h2,
+.font-size-xxxl & {
+    @include rem(font-size, $font-size-xxxl);
 }
 
-h3 {
-    &, .font-size-h3 {
-        @include rem(font-size, $font-size-xxl);
-    }
+h3,
+.font-size-xxl & {
+    @include rem(font-size, $font-size-xxl);
 }
 
-h4 {
-    &, .font-size-h4 {
-        @include rem(font-size, $font-size-xl);
-    }
+h4,
+.font-size-xl {
+    @include rem(font-size, $font-size-xl);
 }
 
-h5 {
-    &, .font-size-h5 {
-        @include rem(font-size, $font-size-large);
-    }
+h5,
+.font-size-large {
+    @include rem(font-size, $font-size-large);
 }
 
-h6 {
-    &, .font-size-h6 {
-        @include rem(font-size, $font-size-medium);
-    }
+h6,
+.font-size-medium {
+    @include rem(font-size, $font-size-medium);
+}
+
+.font-size-small {
+    @include rem(font-size, $font-size-small);
+}
+
+.font-size-tiny {
+    @include rem(font-size, $font-size-tiny);
+}
+
+.font-size-micro {
+    @include rem(font-size, $font-size-micro);
 }
 
 /* Objects
@@ -446,7 +494,7 @@ select,
 textarea {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 3px;
+    border-radius: $global-radius;
     box-shadow: 1px 1px 3px #eee inset;
     color: #999;
     font-size: 14px;
@@ -502,7 +550,7 @@ input:hover[type="submit"],
 }
 
 .button {
-    border-radius: 3px;
+    border-radius: $global-radius;
     display: inline-block;
 }
 
@@ -933,8 +981,7 @@ Site Header
 }
 
 .site-header .wrap {
-    padding: 40px 0;
-    padding: 4rem 0;
+    @include rem(padding, 20px 0);
 }
 
 /* Title Area
@@ -1042,8 +1089,7 @@ Site Navigation
     border: none;
     color: $color-nav-link;
     display: block;
-    padding: 28px 24px;
-    padding: 2.8rem 2.4rem;
+    @include rem(padding, 18px 24px);
     position: relative;
 }
 
@@ -1055,10 +1101,6 @@ Site Navigation
 
 .genesis-nav-menu .sub-menu .current-menu-item > a {
     color: $color-nav-link;
-}
-
-.genesis-nav-menu > .menu-item > a {
-    text-transform: uppercase;
 }
 
 .genesis-nav-menu .sub-menu {
@@ -1177,19 +1219,34 @@ Site Navigation
 }
 
 
+/* Header Navigation
+--------------------------------------------- */
+
+.nav-header a {
+    color: $color-nav-header-link;
+}
+
+.nav-header a:hover,
+.nav-header .current-menu-item > a {
+    color: $color-nav-header-link-hover;
+}
+
 /*
 Content Area
 ---------------------------------------------------------------------------------------------------- */
 /* Entries
 --------------------------------------------- */
 .entry {
-    background-color: $color-entry-bg;
-    color: $color-entry-text;
-    border-radius: 3px;
     margin-bottom: 40px;
     margin-bottom: 4rem;
     padding: 40px 40px 24px;
     padding: 4rem 4rem 2.4rem;
+}
+
+.content .entry {
+    background-color: $color-entry-bg;
+    color: $color-entry-text;
+    border-radius: $global-radius;
 }
 
 .entry-content a {
@@ -1287,7 +1344,7 @@ Content Area
 
 .archive-pagination li a {
     background-color: $color-pagination-button-bg;
-    border-radius: 3px;
+    border-radius: $global-radius;
     color: $color-pagination-button-link;
     cursor: pointer;
     display: inline-block;
@@ -1303,6 +1360,7 @@ Content Area
 .entry-pagination a {
     border-bottom: 1px solid #ddd;
 }
+
 
 /* Comments
 --------------------------------------------- */
@@ -1418,7 +1476,7 @@ Sidebars
 
 .sidebar .widget {
     background-color: $color-widget-bg;
-    border-radius: 3px;
+    border-radius: $global-radius;
     margin-bottom: 40px;
     margin-bottom: 4rem;
     padding: 40px;
@@ -1512,6 +1570,22 @@ Site Footer
     margin-bottom: 0;
 }
 
+/* Tags (Badges)
+--------------------------------------------- */
+
+.tagcloud a, .badge {
+    @include rem(padding, 2px 10px);
+    border-radius: $global-radius;
+
+    background-color: $color-tag-bg;
+    color: $color-tag-link;
+
+    &:hover {
+        background-color: $color-tag-bg-hover;
+        color: $color-tag-link-hover;
+    }
+}
+
 /*
 Media Queries
 ---------------------------------------------------------------------------------------------------- */
@@ -1552,7 +1626,7 @@ Media Queries
 
 @media only screen and (max-width: 1023px) {
     body {
-        background-color: #fff;
+        background-color: $color-entry-bg;
     }
     .content,
     .content-sidebar-sidebar .content,
@@ -1655,4 +1729,65 @@ Media Queries
         margin: 0;
         width: 100%;
     }
+}
+
+/*
+Skins
+---------------------------------------------------------------------------------------------------- */
+
+/* Info Skin
+--------------------------------------------- */
+
+.skin-info {
+
+}
+
+/* Success Skin
+--------------------------------------------- */
+
+.skin-success {
+
+    a {
+        color: $color-success;
+    }
+
+    .site-header {
+        background-color: $color-success;
+    }
+
+    .site-title a {
+        color: $color-lightest;
+    }
+
+    .site-header .genesis-nav-menu a {
+        color: $color-lightest;
+    }
+
+    .nav-primary {
+        background-color: darken($color-success, 20);
+    }
+
+    .footer-widgets {
+        background-color: darken($color-success, 40);
+    }
+
+    .site-footer {
+        background-color: darken($color-success, 45);
+    }
+
+}
+
+/* Warning Skin
+--------------------------------------------- */
+
+.skin-warning {
+
+}
+
+
+/* Alert Skin
+--------------------------------------------- */
+
+.skin-alert{
+
 }
