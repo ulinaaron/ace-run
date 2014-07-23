@@ -1,16 +1,16 @@
 {
-  "name": "wordpress-gulp-bower-sass",
+  "name": "ace-run",
   "version": "0.0.1",
   "description": "A WordPress/Gulp/Bower/Sass starter kit.",
-  "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
+  "homepage": "https://github.com/ulinaaron/ace-run",
   "repository": {
     "type": "git",
-    "url": "https://github.com/synapticism/wordpress-gulp-bower-sass.git"
+    "url": "https://github.com/ulinaaron/ace-run.git"
   },
   "scripts": {
     "postinstall": "gulp npm-packages"
   },
-  "author": "Alexander Synaptic",
+  "author": "Aaron Mazade",
   "license": "GNU General Public Licence 2.0",
   "main": "index.js",
   "private": true,

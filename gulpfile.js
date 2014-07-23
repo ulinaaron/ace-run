@@ -97,7 +97,7 @@ gulp.task('images', function () {
             progressive: true,
             interlaced: true
         })))
-        .pipe(gulp.dest(dir_img));
+        .pipe(gulp.dest(dir_img))
         .pipe(reload({stream:true, once:true}));
 });
 
@@ -124,7 +124,7 @@ gulp.task('reload', function () {
 
 
 /**
- * Task: Bower Components
+ * Task: Bower Packages
  * ================
  * This is a manual process for components that should be included.
  * However the advantage is Gulp will fetch the latest version on bower update.
@@ -132,7 +132,7 @@ gulp.task('reload', function () {
  * Run 'gulp bower' to use.
  */
 
-gulp.task('bower', function () {
+gulp.task('bower-packages', function () {
 
     return merge(
 

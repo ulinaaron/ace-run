@@ -1,9 +1,9 @@
 {
-  "name": "wordpress-gulp-bower-sass",
+  "name": "ace-run",
   "version": "0.0.1",
-  "homepage": "https://github.com/synapticism/wordpress-gulp-bower-sass",
+  "homepage": "https://github.com/ulinaaron/ace-run",
   "authors": [
-    "Alexander Synaptic <alexander@synapticism.com>"
+    "Aaron Mazade <aaron@aaronmazade.com>"
   ],
   "moduleType": [
     "amd"
