@@ -1,6 +1,6 @@
 {
   "directory": "assets/src/bower_components",
   "scripts": {
-    "postinstall": "gulp bower"
+    "postinstall": "gulp bower-packages"
   }
 }
