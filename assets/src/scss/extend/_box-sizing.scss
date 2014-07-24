@@ -1,0 +1,6 @@
+/* Box Sizing
+--------------------------------------------- */
+*,
+input[type="search"] {
+    @include box-sizing(border-box);
+}

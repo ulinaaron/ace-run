@@ -1,0 +1,78 @@
+/*
+BASE
+---------------------------------------------------------------------------------------------------- */
+
+html {
+    font-size: 62.5%;
+    /* 10px browser default */
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background-color: $color-body-bg;
+    color: $color-body-text;
+    font-family: $font-family-body;
+    font-size: $font-size-base-px;
+    font-size: $font-size-base-em;
+    /* Bug fix for browsers making font twice the size after random refreshing */
+    font-weight: 400;
+    line-height: $base-line-height;
+}
+
+a,
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus,
+.button {
+    transition: all 0.1s ease-in-out;
+}
+
+::-moz-selection {
+    background-color: $color-selection-bg;
+    color: $color-selection-text;
+}
+
+::selection {
+    background-color: $color-selection-bg;
+    color: $color-selection-text;
+}
+
+a {
+  @include transition(color 0.1s linear);
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+
+  &:active, &:focus {
+    color: $link-color-hover;
+    outline: none;
+  }
+}
+
+a img {
+    @include rem(margin-bottom, -4px);
+}
+
+
+/* Objects
+--------------------------------------------- */
+embed,
+iframe,
+img,
+object,
+video,
+.wp-caption {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+    width: auto;
+    /* IE8 */
+}

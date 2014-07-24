@@ -1,0 +1,15 @@
+/* Tags (Badges)
+--------------------------------------------- */
+
+.tagcloud a, .badge {
+    @include rem(padding, 2px 10px);
+    border-radius: $global-radius;
+
+    background-color: $color-tag-bg;
+    color: $color-tag-link;
+
+    &:hover {
+        background-color: $color-tag-bg-hover;
+        color: $color-tag-link-hover;
+    }
+}

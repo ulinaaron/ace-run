@@ -1,0 +1,32 @@
+/* Pagination
+--------------------------------------------- */
+.archive-pagination,
+.entry-pagination {
+    font-size: 14px;
+    font-size: 1.4rem;
+    margin: 40px 0;
+    margin: 4rem 0;
+}
+
+.archive-pagination li {
+    display: inline;
+}
+
+.archive-pagination li a {
+    background-color: $color-pagination-button-bg;
+    border-radius: $global-radius;
+    color: $color-pagination-button-link;
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 12px;
+    padding: 0.8rem 1.2rem;
+}
+
+.archive-pagination li a:hover,
+.archive-pagination li.active a {
+    background-color: $color-pagination-button-bg-hover;
+}
+
+.entry-pagination a {
+    border-bottom: 1px solid #ddd;
+}

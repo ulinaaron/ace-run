@@ -1,0 +1,210 @@
+// THEME VARIABLES
+// ---------------------------------------------
+
+// MISC
+// -------------------------
+
+// Borders
+$base-border-color: $color-light;
+$base-border: 1px solid $base-border-color;
+
+$color-wp-edit-link: $color-alert;
+$global-radius: 6px;
+
+// Sizes
+$base-spacing: $base-line-height * 1em;
+$base-z-index: 0;
+
+// THEME COLORS
+// -------------------------
+
+$color-primary: #8fa1b3;
+$color-secondary: #b48ead;
+$color-tertiary: #ab7967;
+
+$color-success: #a3be8c;
+$color-warning: #d08770;
+$color-alert: #bf616a;
+$color-info: #96b5b4;
+
+$color-light: #c0c5ce;
+$color-lighter: #dfe1e8;
+$color-lightest: #eff1f5;
+$color-medium: #65737e;
+$color-dark: #4f5b66;
+$color-darker: #343d46;
+$color-darkest: #2b303b;
+
+// ELEMENT COLORS
+// -------------------------
+$color-body-bg: $color-light;
+$color-body-text: $color-darkest;
+
+$color-header-bg: $color-darker;
+$color-header-text: $color-lightest;
+$color-header-subheader: $color-lighter;
+
+$color-entry-bg: $color-lightest;
+$color-entry-text: $color-dark;
+$color-entry-link: $color-primary;
+$color-entry-link-hover: $color-darkest;
+$color-entry-heading-link: $color-warning;
+$color-entry-heading-link-hover: $color-darker;
+
+$color-widget-bg: $color-lightest;
+$color-selection-bg: $color-primary;
+
+$color-base-border: $color-lighter;
+
+// Used when text is highlighted
+$color-selection-text: $color-lightest;
+
+// TYPOGRAPHY
+// -------------------------
+
+$font-family-primary: "Lato", sans-serif;
+$font-family-secondary: Arial, sans-serif;
+
+$font-family-body: $font-family-primary;
+
+// FONT SIZES
+// -------------------------
+
+$font-size-base-px: 16px;
+$font-size-base: $font-size-base-px;
+$font-size-base-em: 1.6em; // Bug fix for browsers making font twice the size after random refreshing
+
+$font-size-micro: 10px;
+$font-size-tiny: 12px;
+$font-size-small: 14px;
+$font-size-medium: 16px;
+$font-size-large: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 22px;
+$font-size-xxxl: 26px;
+$font-size-huge: 32px;
+
+$font-size-entry: $font-size-huge;
+
+// HEADINGS
+// -------------------------
+$heading-font-family: $font-family-primary;
+$heading-color: $color-alert;
+
+// LINE HEIGHT
+// -------------------------
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
+// LINKS
+// -------------------------
+$link-color: $color-primary;
+$link-color-hover: darken($link-color, 20);
+$link-transitions: true;
+
+// BUTTONS
+// -------------------------
+
+$button-base-bg-color: $color-primary;
+$button-base-bg-hover: $color-dark;
+
+$button-base-link: $color-lightest;
+$button-base-link-hover: $color-lightest;
+
+// FORMS
+// -------------------------
+
+$form-border-color: $base-border-color;
+$form-border-color-hover: darken($base-border-color, 10);
+$form-border-color-focus: $color-info;
+$form-border-radius: $global-radius
+$form-box-shadow: inset 0 1px 3px rgba(black,0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
+$form-font-size: $font-size-base;
+$form-font-family: $font-family-primary;
+
+// NAVIGATION
+// -------------------------
+
+$nav-font-family: $font-family-primary;
+
+//Nav Primary
+$color-nav-link: $color-lightest;
+$color-nav-link-hover: $color-darkest;
+
+$color-nav-primary-bg: darken($color-header-bg, 10);
+$color-nav-primary-link: $color-light;
+$color-nav-primary-link-hover: $color-secondary;
+
+// -- Primary Sub Navigation
+$color-nav-primary-sub-bg: $color-nav-primary-bg;
+$color-nav-primary-sub-link: $color-nav-primary-link;
+$color-nav-primary-sub-link-hover: $color-nav-primary-link-hover;
+
+
+// Nav Secondary
+$color-nav-secondary-bg: $color-lighter;
+$color-nav-secondary-link: $color-darker;
+$color-nav-secondary-link-hover: $color-secondary;
+
+// -- Secondary Sub Navigation
+$color-nav-secondary-sub-bg: $color-nav-secondary-bg;
+$color-nav-secondary-sub-link: $color-nav-secondary-link;
+$color-nav-secondary-sub-link-hover: $color-nav-secondary-link-hover;
+
+
+// Nav Secondary
+$color-nav-header-link: $color-lightest;
+$color-nav-header-link-hover: $color-secondary;
+
+// PAGINATION
+// -------------------------
+
+$color-pagination-button-bg: $color-darkest;
+$color-pagination-button-bg-hover: $color-alert;
+$color-pagination-button-link: $color-lightest;
+
+// TAGS (BADGES)
+// -------------------------
+
+$color-tag-bg: $color-alert;
+$color-tag-bg-hover: $color-primary;
+$color-tag-link: $color-lightest;
+$color-tag-link-hover: $color-tag-link;
+
+// FOOTER
+// -------------------------
+
+// Footer Widgets
+$color-footer-widgets-bg: $color-darkest;
+$color-footer-widgets-text: $color-lighter;
+
+$color-footer-widget-link: $color-secondary;
+$color-footer-widget-link-hover: $color-primary;
+
+// Copyright / Credits
+$color-footer-bg: $color-medium;
+$color-footer-text: $color-lightest;
+
+// NEAT GRID
+// -------------------------
+$medium-screen: em(640);
+$large-screen: em(860);
+
+$medium-screen-up: new-breakpoint(min-width $medium-screen 4);
+$large-screen-up: new-breakpoint(min-width $large-screen 8);
+
+// Font Awesome
+// -------------------------
+
+$fa-font-path:        "assets/fonts"; // Relative to theme root folder
+$fa-css-prefix:       fa;
+$fa-border-color:     $color-medium;
+$fa-inverse:          $color-light;
+$fa-li-width:         (30em / 14) ;
+
+// BLOCKQUOTE
+// -------------------------
+
+// $blockquote-font-family: $base-font-family-alternative;
+// $blockquote-border-left: 4px solid $color-lighter;

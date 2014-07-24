@@ -1,0 +1,16 @@
+/*
+BUTTONS
+---------------------------------------------------------------------------------------------------- */
+
+.button,
+button,
+input[type="submit"],
+.entry-content a.button {
+  @extend %button;
+  @include appearance(none);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}

@@ -5,6 +5,7 @@
 
 var dir_assets = "assets/",
     dir_scss = 'assets/src/scss/',
+    dir_scss_vendor = 'assets/src/scss/vendor/',
     dir_css = 'assets/css/',
     dir_src_js = 'assets/src/js/',
     dir_src_js_plug = 'assets/src/js/plugins/',
@@ -139,16 +140,20 @@ gulp.task('bower-packages', function () {
         // Normalize
         gulp.src([dir_bower + 'normalize.css/normalize.css'])
             .pipe(plugins.rename('_base_normalize.scss'))
-            .pipe(gulp.dest(dir_scss)), // Copies to src/scss
+            .pipe(gulp.dest(dir_scss_vendor)), // Copies to src/scss
 
         // Animate.css
         gulp.src([dir_bower + 'animate.css/animate.css'])
             .pipe(plugins.rename('_animate.scss'))
-            .pipe(gulp.dest(dir_scss)), // Copies to src/scss
+            .pipe(gulp.dest(dir_scss_vendor)), // Copies to src/scss
 
         // Move Font Awesome Fonts
         gulp.src(dir_bower + 'Font-Awesome/fonts/**/*.*', ['clean'])
-            .pipe(gulp.dest(dir_assets + 'fonts')) // Copies to src/scss
+            .pipe(gulp.dest(dir_assets + 'fonts')), // Copies to src/scss
+
+        // Move Font Awesome SCSS
+        gulp.src(dir_bower + 'Font-Awesome/scss/**/*.*', ['clean'])
+            .pipe(gulp.dest(dir_scss_vendor + 'font-awesome')) // Copies to src/scss
     );
 
 });
@@ -167,11 +172,11 @@ gulp.task('npm-packages', function () {
 
         // Node Bourbon
         gulp.src(dir_npm + 'node-bourbon/assets/stylesheets/**/*.*', ['clean'])
-            .pipe(gulp.dest(dir_scss + 'vendor/node-bourbon')), // Copies to src/scss
+            .pipe(gulp.dest(dir_scss_vendor + 'node-bourbon')), // Copies to src/scss
 
         // Node Neat
         gulp.src(dir_npm + 'node-neat/assets/stylesheets/**/*.*', ['clean'])
-            .pipe(gulp.dest(dir_scss + 'vendor/node-neat')) // Copies to src/scss
+            .pipe(gulp.dest(dir_scss_vendor + 'node-neat')) // Copies to src/scss
     );
 });
 

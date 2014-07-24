@@ -1,0 +1,151 @@
+/* WordPress
+--------------------------------------------- */
+.avatar {
+    float: left;
+}
+
+.alignleft .avatar {
+    @include rem(margin-right, 24px);
+}
+
+.alignright .avatar {
+    @include rem(margin-left, 24px);
+}
+
+.search-form input[type="submit"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+img.centered,
+.aligncenter {
+    display: block;
+    @include rem(margin, 0 auto 24px);
+}
+
+img.alignnone {
+    @include rem(margin-bottom, 12px);
+}
+
+.alignleft {
+    float: left;
+    text-align: left;
+}
+
+.alignright {
+    float: right;
+    text-align: right;
+}
+
+img.alignleft,
+.wp-caption.alignleft {
+    @include rem(margin, 0 24px 24px 0);
+}
+
+img.alignright,
+.wp-caption.alignright {
+    @include rem(margin, 0 0 24px 24px);
+}
+
+.wp-caption-text {
+    @include rem(font-size, $font-size-small);
+    font-weight: 700;
+    text-align: center;
+}
+
+.widget_calendar table {
+    width: 100%;
+}
+
+.widget_calendar td,
+.widget_calendar th {
+    text-align: center;
+}
+
+/* Genesis
+--------------------------------------------- */
+.breadcrumb {
+    @include rem(margin-bottom, 20px);
+}
+
+.archive-description,
+.author-box {
+    background-color: $color-lightest;
+    @include rem(margin-bottom, 40px);
+}
+
+.archive-description {
+    @include rem(padding, 40px 40px 24px);
+}
+
+.author-box {
+    @include rem(padding, 40px);
+}
+
+.author-box-title {
+    color: #333;
+    font-family: $font-family-primary;
+    font-size: 16px;
+    font-size: 1.6rem;
+    @include rem(margin-bottom, 4px);
+}
+
+.author-box a {
+    border-bottom: 1px solid #ddd;
+}
+
+.author-box p {
+    margin-bottom: 0;
+}
+
+.author-box .avatar {
+    @include rem(margin-right, 24px);
+}
+
+
+/* Titles
+--------------------------------------------- */
+
+.entry-title {
+    @include rem(font-size, $font-size-entry);
+    line-height: 1;
+}
+
+.entry-title a,
+.sidebar .widget-title a {
+    color: $color-entry-heading-link;
+}
+
+.entry-title a:hover {
+    color: $color-entry-heading-link-hover;
+}
+
+.widget-title {
+    font-size: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
+    text-transform: uppercase;
+}
+
+.sidebar .widget-title a {
+    border: none;
+}
+
+.archive-title {
+    font-size: 20px;
+    font-size: 2rem;
+    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
+}
+/* Misc
+--------------------------------------------- */
+
+.entry-content .post-edit-link {
+    color: $color-wp-edit-link;
+}

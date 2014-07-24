@@ -1,0 +1,95 @@
+/*
+Structure and Layout
+---------------------------------------------------------------------------------------------------- */
+
+/* Float Clearing
+--------------------------------------------- */
+
+.archive-pagination,
+.clearfix,
+.entry,
+.entry-pagination,
+.footer-widgets,
+.nav-primary,
+.nav-secondary,
+.site-container,
+.site-footer,
+.site-header,
+.site-inner,
+.wrap {
+    @include clearfix;
+}
+
+/* Site Containers
+--------------------------------------------- */
+.site-inner,
+.wrap {
+    margin: 0 auto;
+    @include rem(max-width, 1140px);
+}
+
+.site-inner {
+    clear: both;
+    @include rem(padding-top, 40px);
+}
+
+/* Column Widths and Positions
+--------------------------------------------- */
+/* Wrapping div for .content and .sidebar-primary */
+.content-sidebar-sidebar .content-sidebar-wrap,
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+    @include rem(width, 920px);
+}
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+    float: left;
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+    float: right;
+}
+
+/* Content */
+.content {
+    float: right;
+    @include rem(width, 740px);
+}
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+    float: left;
+}
+
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content,
+.sidebar-sidebar-content .content {
+    @include rem(width, 520px);
+}
+
+.full-width-content .content {
+    width: 100%;
+}
+
+/* Primary Sidebar */
+.sidebar-primary {
+    float: right;
+    @include rem(width, 360px);
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+    float: left;
+}
+
+/* Secondary Sidebar */
+.sidebar-secondary {
+    float: left;
+    @include rem(width, 180px);
+}
+
+.content-sidebar-sidebar .sidebar-secondary {
+    float: right;
+}

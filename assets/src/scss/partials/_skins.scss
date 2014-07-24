@@ -1,0 +1,60 @@
+/*
+Skins
+---------------------------------------------------------------------------------------------------- */
+
+/* Info Skin
+--------------------------------------------- */
+
+.skin-info {
+
+}
+
+/* Success Skin
+--------------------------------------------- */
+
+.skin-success {
+
+    a {
+        color: $color-success;
+    }
+
+    .site-header {
+        background-color: $color-success;
+    }
+
+    .site-title a {
+        color: $color-lightest;
+    }
+
+    .site-header .genesis-nav-menu a {
+        color: $color-lightest;
+    }
+
+    .nav-primary {
+        background-color: darken($color-success, 20);
+    }
+
+    .footer-widgets {
+        background-color: darken($color-success, 40);
+    }
+
+    .site-footer {
+        background-color: darken($color-success, 45);
+    }
+
+}
+
+/* Warning Skin
+--------------------------------------------- */
+
+.skin-warning {
+
+}
+
+
+/* Alert Skin
+--------------------------------------------- */
+
+.skin-alert{
+
+}

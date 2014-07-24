@@ -1,0 +1,18 @@
+%button {
+  -webkit-font-smoothing: antialiased;
+  background-color: $button-base-bg-color;
+  border-radius: $global-radius;
+  color: $button-base-link;
+  display: inline-block;
+  @include rem(font-size, $font-size-medium);
+  font-weight: bold;
+  line-height: 1;
+  padding: .75em 1em;
+  @include rem(padding, 10px 20px);
+  text-decoration: none;
+
+  &:hover {
+    background-color: $button-base-bg-hover;
+    color: $button-base-link-hover;
+  }
+}
