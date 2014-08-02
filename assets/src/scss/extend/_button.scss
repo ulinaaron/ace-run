@@ -1,18 +1,20 @@
-%button {
-  -webkit-font-smoothing: antialiased;
-  background-color: $button-base-bg-color;
-  border-radius: $global-radius;
-  color: $button-base-link;
-  display: inline-block;
-  @include rem(font-size, $font-size-medium);
-  font-weight: bold;
-  line-height: 1;
-  padding: .75em 1em;
-  @include rem(padding, 10px 20px);
-  text-decoration: none;
+@mixin button-style($bg: $button-base-bg-color, $color: $button-base-link, $bg-hover: darken($bg, 20), $include-border: true, $border-color: darken($bg, 20) ) {
+	background-color: $bg;
+	color: $color;
+	&:hover {
+		background-color: $bg-hover;
+	}
 
-  &:hover {
-    background-color: $button-base-bg-hover;
-    color: $button-base-link-hover;
-  }
+    @if $include-border == true {
+        border-bottom: 5px solid $border-color;
+    }
+}
+
+@mixin button-shiny($color) {
+    &.shiny {
+        @include linear-gradient( lighten($color, 8), darken($color, 8) );
+    }
+    &.shiny:hover {
+        @include linear-gradient( darken($color, 8), lighten($color, 8) );
+    }
 }

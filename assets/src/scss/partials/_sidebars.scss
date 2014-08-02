@@ -2,7 +2,7 @@
 Sidebars
 --------------------------------------------- */
 .sidebar {
-    color: #999;
+    color: $sidebar-color-text;
 }
 
 .sidebar a {
@@ -31,8 +31,4 @@ Sidebars
     margin-bottom: 4rem;
     padding: 40px;
     padding: 4rem;
-}
-
-.sidebar .enews-widget {
-    background-color: #333;
 }

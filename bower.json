@@ -21,8 +21,11 @@
     "tests"
   ],
   "dependencies": {
-    "normalize.css": "latest",
     "animate.css": "latest",
-    "Font-Awesome": "latest"
+    "conditionizr": "latest",
+    "Font-Awesome": "latest",
+    "modernizr": "latest",
+    "normalize.css": "latest",
+    "WOW": "latest"
   }
 }

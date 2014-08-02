@@ -1,0 +1,23 @@
+.content-columns-2 {
+    @include columns(1);
+
+    @include media($screen-small-up) {
+        @include columns(2);
+    }
+}
+
+.content-columns-3 {
+    @include columns(1);
+
+    @include media($screen-small-up) {
+        @include columns(3);
+    }
+}
+
+.content-columns-4 {
+    @include columns(2);
+
+    @include media($screen-small-up) {
+        @include columns(4);
+    }
+}

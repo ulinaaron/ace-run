@@ -1,0 +1,146 @@
+/* Progress Bar
+--------------------------------------------- */
+$progress-border-color: $color-base-border;
+$progress-border: 1px solid $progress-border-color;
+$progress-meter-border-color: $color-tertiary;
+$progress-border-radius: $global-radius;
+$progress-meter-color: $progress-meter-border-color;
+$progress-bg-color: darken($color-entry-bg, 5);
+$progress-animation-duration: 0.7s;
+$progress-height: 30px;
+$progress-color: $color-lightest;
+
+@mixin progress-bar($meter-color: $progress-meter-color, $bg: $progress-bg-color, $style: default) {
+
+    background-color: $bg;
+    border: $progress-border;
+    box-shadow: inset 0 0 3px 0 rgba(darken($progress-bg-color, 50%), 0.15);
+    border-radius: $progress-border-radius;
+
+    > span.meter {
+        background-color: $meter-color;
+        border: 1px solid darken($meter-color, 15);
+    }
+
+    @if $style == indicator {
+
+        width: 100%;
+
+        > span.meter {
+            @include box-sizing(border-box);
+            background-size: 40px 40px;
+            background-repeat: repeat-x;
+            border-radius: $progress-border-radius /1.5;
+            display: block;
+            height: 100%;
+        }
+
+        p {
+            margin-bottom: 0;
+            padding: .1em .5em;
+            font-weight: 800;
+            color: $progress-color;
+            text-shadow: 0 0 1px black;
+        }
+
+    } @else if $style == default {
+
+        height: $progress-height;
+        padding: 2px;
+        width: 100%;
+
+        > span.meter {
+            @include animation(progress $progress-animation-duration linear infinite);
+            @include box-sizing(border-box);
+            @include background-image(linear-gradient(-45deg, rgba(255,255,255, 0.15) 25%,
+                                                              transparent 25%,
+                                                              transparent 50%,
+                                                              rgba(255,255,255, 0.15) 50%,
+                                                              rgba(255,255,255, 0.15) 75%,
+                                                              transparent 75%));
+            background-size: 40px 40px;
+            background-repeat: repeat-x;
+            border-radius: $progress-border-radius /1.5;
+            display: block;
+            height: 100%;
+        }
+    } @else if $style == none {
+        // Excluded core styles for variations
+    }
+}
+
+/* Progress Bar
+--------------------------------------------- */
+
+.progress-bar {
+    @include progress-bar($style: default);
+}
+
+
+.progress-bar-indication {
+     @include progress-bar($style: indicator);
+}
+
+.progress-bar,
+.progress-bar-indication {
+    &.success{
+        @include progress-bar($meter-color: $color-success, $style: none);
+    }
+    &.warning{
+        @include progress-bar($meter-color: $color-warning, $style: none);
+    }
+    &.info{
+        @include progress-bar($meter-color: $color-info, $style: none);
+    }
+    &.alert{
+        @include progress-bar($meter-color: $color-alert, $style: none);
+    }
+}
+
+/* Progress Bar Keyframes
+--------------------------------------------- */
+
+@-webkit-keyframes progress {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}
+
+@-moz-keyframes progress {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}
+
+@-ms-keyframes progress {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}
+
+@-o-keyframes progress {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}
+
+@keyframes progress {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 0px;
+  }
+}

@@ -25,7 +25,7 @@ Structure and Layout
 .site-inner,
 .wrap {
     margin: 0 auto;
-    @include rem(max-width, 1140px);
+    @include outer-container();
 }
 
 .site-inner {

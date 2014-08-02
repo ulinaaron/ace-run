@@ -6,11 +6,111 @@ BUTTONS
 button,
 input[type="submit"],
 .entry-content a.button {
-  @extend %button;
-  @include appearance(none);
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+    @include appearance(none);
+    display: inline-block;
+	white-space: nowrap;
+    background-clip: padding-box;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    font-weight: bold;
+    border-radius: $button-radius;
+
+    @include button-style();
+
+	// Hover
+
+	&,
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+	}
+
+	// Button Variations
+
+	&.primary 	{
+        @include button-style($color-primary);
+        @include button-shiny($color-primary);
+    }
+	&.secondary {
+        @include button-style($color-secondary);
+        @include button-shiny($color-secondary);
+    }
+	&.tertiary  {
+        @include button-style($color-tertiary);
+        @include button-shiny($color-tertiary);
+    }
+    &.success 	{
+        @include button-style($color-success);
+        @include button-shiny($color-success);
+    }
+    &.info      {
+        @include button-style($color-info);
+        @include button-shiny($color-info);
+    }
+	&.warning   {
+        @include button-style($color-warning);
+        @include button-shiny($color-warning);
+    }
+    &.alert     {
+        @include button-style($color-alert);
+        @include button-shiny($color-alert);
+    }
+
+    // Button Expansion / Fluidity
+
+    &.expand,
+    &.fluid
+    {
+        display: block;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    // Sizes
+
+    @include rem(padding, 5px 30px);
+
+    &.micro  {
+        @include rem(padding, 2px 15px);
+        @include rem(font-size, $font-size-tiny);
+	}
+	&.tiny 	 {
+        @include rem(padding, 2px 20px);
+        @include rem(font-size, $font-size-small);
+	}
+	&.small  {
+        @include rem(padding, 5px 25px);
+        @include rem(font-size, $font-size-small);
+	}
+	&.medium {
+        @include rem(padding, 5px 30px);
+        @include rem(font-size, $font-size-medium);
+	}
+	&.large  {
+        @include rem(padding, 5px 30px);
+        @include rem(font-size, $font-size-medium);
+	}
+	&.xl 	 {
+        @include rem(padding, 5px 40px);
+        @include rem(font-size, $font-size-large);
+	}
+	&.xxl 	 {
+        @include rem(padding, 5px 45px);
+        @include rem(font-size, $font-size-xl);
+	}
+	&.xxxl 	 {
+        @include rem(padding, 5px 50px);
+        @include rem(font-size, $font-size-xxl);
+	}
+	&.huge 	 {
+        @include rem(padding, 5px 60px);
+        @include rem(font-size, $font-size-xxl);
+	}
 }

@@ -20,17 +20,17 @@ WARNING: Compiled from /assets/sass/style.scss
 // IMPORTS
 // ----------------------------------------------------------------------------------------------------
 
-// VARIABLES
-@import "variables";
-
-// UTILITIES
-@import "extend/utilities";
-
 // BOURBON
 @import "vendor/node-bourbon/bourbon";
 
 // BOURBON NEAT
 @import "vendor/node-neat/neat";
+
+// UTILITIES
+@import "extend/utilities";
+
+// VARIABLES
+@import "variables";
 
 // BASELINE NORMALIZE
 @import "vendor/base_normalize";
@@ -57,24 +57,33 @@ WARNING: Compiled from /assets/sass/style.scss
 @import "base/buttons";
 
 //
-// MODULES & COMPONENTS
+// PARTIALS
 // ---------------------------------------------
 
 @import "partials/structure";
+@import "partials/misc";
 @import "partials/grid";
 @import "partials/wp";
-@import "partials/widgets";
-@import "partials/plugins";
 @import "partials/header";
 @import "partials/navigation";
 @import "partials/wp_content";
 @import "partials/pagination";
 @import "partials/comments";
 @import "partials/sidebars";
+@import "partials/widgets";
+@import "partials/plugins";
 @import "partials/footer";
 @import "partials/badges";
 @import "partials/media_queries";
 @import "partials/skins";
+
+//
+// MODULES
+// ---------------------------------------------
+
+@import "modules/modal";
+@import "modules/progress_bars";
+@import "modules/tabs";
 
 //
 // ADDITIONAL LIBRARIES

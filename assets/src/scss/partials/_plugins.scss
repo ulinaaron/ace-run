@@ -1,35 +1,42 @@
 /*
 Plugins
 ---------------------------------------------------------------------------------------------------- */
+
 /* Genesis eNews Extended
 --------------------------------------------- */
+.sidebar .enews-widget {
+    background-color: $enews-color-bg;
+}
+
 .enews-widget {
-    color: #999;
+    color: $enews-color-text;
 }
 
 .enews-widget .widget-title {
-    color: #fff;
+    color: $enews-color-heading;
 }
 
 .enews-widget input {
-    margin-bottom: 16px;
-    margin-bottom: 1.6rem;
+    @include rem(margin-bottom, 16px);
 }
 
 .enews-widget input:focus {
-    border: 1px solid #ddd;
+    border: 1px solid $color-info;
+}
+
+.enews-widget .widget-title + p {
+     @include rem(font-size, $enews-subheader-font-size);
+}
+
+.enews-widget form + p {
+    @include rem(margin-top, 10px);
+    @include rem(font-size, $enews-post-font-size);
+    text-align: center;
 }
 
 .enews-widget input[type="submit"] {
-    background-color: #f15123;
-    color: #fff;
-    margin: 0;
-    width: 100%;
-}
-
-.enews-widget input:hover[type="submit"] {
-    background-color: #fff;
-    color: #333;
+    @include button-style($color-success);
+    @extend .button.expand;
 }
 
 /* Genesis Latest Tweets

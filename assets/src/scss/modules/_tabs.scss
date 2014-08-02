@@ -1,0 +1,175 @@
+$tab-border-color: $base-border-color;
+$tab-border: 1px solid $tab-border-color;
+$tab-content-background: $color-entry-bg;
+$tab-active-background: $tab-content-background;
+$tab-inactive-color: lighten($color-lighter, 3);
+$tab-inactive-hover-color: darken($color-light, 2);
+$tab-link-color: $color-dark;
+$tab-mode: $screen-small;
+$tab-border-radius: $global-radius;
+
+ul.accordion-tabs-minimal {
+    @include clearfix;
+    border: $tab-border;
+    border-radius: $tab-border-radius;
+    @include rem(margin-bottom, 20px);
+    margin-left: 0;
+    > li {
+        list-style-type: none;
+    }
+    @include media($tab-mode) {
+        border: none;
+    }
+
+    li.tab-header-and-content {
+        @include media($tab-mode) {
+            display: inline;
+        }
+
+        &:first-child a.tab-link {
+            border-top-left-radius: $tab-border-radius;
+            border-top-right-radius: $tab-border-radius;
+            border-top: 0;
+        }
+        &:last-child a.tab-link {
+            border-bottom-left-radius: $tab-border-radius;
+            border-bottom-right-radius: $tab-border-radius;
+            @include media($tab-mode) {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+    li.tab-header-and-content a.tab-link {
+        background-color: $tab-inactive-color;
+        border-top: $tab-border;
+        color: $tab-link-color;
+        display: block;
+        font-weight: 400;
+        @include rem(padding, 10px 20px);
+        @include media($tab-mode) {
+            @include inline-block;
+            border-top: 0;
+            border-top-right-radius: $tab-border-radius;
+            border-top-left-radius: $tab-border-radius;
+        }
+
+        &:hover {
+            color: $link-color-hover;
+        }
+        &:focus {
+            outline: none;
+        }
+        &.is-active {
+            background-color: $tab-active-background;
+            border-bottom: 0;
+            @include media($tab-mode) {
+                background-color: $tab-active-background;
+                border: $tab-border;
+                border-bottom: 1px solid $tab-active-background;
+                margin-bottom: -1px;
+                font-weight: bold;
+            }
+        }
+    }
+    li.tab-header-and-content .tab-content {
+        @include rem(padding, 10px);
+        background: $tab-content-background;
+        display: none;
+        overflow: hidden;
+        width: 100%;
+        @include media($tab-mode) {
+            border-top: $tab-border;
+            float: left;
+            left: 0;
+            @include rem(padding, 10px);
+        }
+    }
+}
+
+/* Vertical Tabs
+--------------------------------------------- */
+$vertical-tabs-height: em(300);
+$vertical-tab-mode: $screen-small;
+
+.vertical-tabs-container {
+    // small screens: accordion
+    @include clearfix;
+    @include rem(margin-bottom, 20px);
+    overflow: hidden;
+
+    .vertical-tabs {
+        display: none;
+        @include media($vertical-tab-mode) {
+            background-color: $tab-inactive-color;
+            display: inline;
+            float: left;
+            height: $vertical-tabs-height;
+            width: 20%;
+        }
+    }
+    .vertical-tab {
+        @include media($vertical-tab-mode) {
+            color: $tab-link-color;
+            display: block;
+            margin-right: -1px;
+            background-color: $tab-inactive-color;
+
+            @include rem(padding, 10px 20px);
+            &.is-active {
+                background-color: $tab-content-background;
+                margin-right: -2px;
+                font-weight: bold;
+
+            }
+        }
+    }
+    .vertical-tab:focus {
+        outline: none;
+    }
+    .vertical-tab-content-container {
+        display: block;
+        margin: 0 auto;
+
+        & a:focus {
+            outline: none;
+        }
+        @include media($vertical-tab-mode) {
+            @include inline-block;
+            @include size(80% $vertical-tabs-height);
+            background-color: $tab-content-background;
+        }
+    }
+    .vertical-tab-content {
+        background-color: $tab-content-background;
+        @include rem(padding, 20px);
+        @include media($vertical-tab-mode) {
+            border: none;
+            display: none;
+        }
+    }
+    .vertical-tab-accordion-heading {
+        background-color: $tab-inactive-color;
+        border-top: $tab-border;
+        cursor: pointer;
+        display: block;
+        @include rem(padding, 20px);
+        &:hover {
+            color: $tab-link-color;
+        }
+        &:first-child {
+            border-top: none;
+        }
+        &.is-active {
+            background: $tab-active-background;
+            border-bottom: none;
+            font-weight: bold;
+            color: $tab-link-color;
+        }
+        @include media($vertical-tab-mode) {
+            display: none;
+        }
+    }
+}
+
+// Based on code by Jett Miller jettmiller.net

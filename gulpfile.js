@@ -8,6 +8,7 @@ var dir_assets = "assets/",
     dir_scss_vendor = 'assets/src/scss/vendor/',
     dir_css = 'assets/css/',
     dir_src_js = 'assets/src/js/',
+    dir_src_js_standalone = 'assets/src/js/standalone/',
     dir_src_js_plug = 'assets/src/js/plugins/',
     dir_js = 'assets/js/',
     dir_src_img = 'assets/src/img/',
@@ -20,7 +21,25 @@ var dir_assets = "assets/",
     dev_port = '7280'
 ;
 
-// Initialization sequence
+/**
+ * Javascript Contatenation Order
+ * Note: This is a temporary process.
+ * Todo: Iteration needs to occur that automates the Javascript Source directory and file extension. There is no point repeating these as they will not change.
+ */
+
+var js_order = [
+    // dir_src_js + 'modernizr.js',
+    dir_src_js + 'conditionizr.js',
+    dir_src_js + 'wow.js',
+    dir_src_js + 'functions.js'
+];
+
+
+/**
+ * Initialize
+ * ========================
+ */
+
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     plugins = require('gulp-load-plugins')({
@@ -37,18 +56,68 @@ var gulp = require('gulp'),
  */
 
 gulp.task('styles', function () {
-    return gulp.src([dir_scss + '*.scss', !dir_scss + '_*.scss'])
+    return gulp.src([dir_scss + '*.scss', '!' + dir_scss + '_*.scss'])
         .pipe(plugins.sass({
             errLogToConsole: true
         }))
         .pipe(plugins.autoprefixer('last 2 versions', 'ie 9', 'ios 6', 'android 4'))
         .pipe(plugins.bless())
         .pipe(gulp.dest(dir_css))
+        .pipe(plugins.rename({
+        suffix: '.min'
+        }))
         .pipe(plugins.minifyCss({
             keepSpecialComments: 1
         }))
         .pipe(gulp.dest(build))
         .pipe(reload({stream:true}));
+});
+
+/**
+ * Task: Style Testing
+ * ========================
+ */
+
+gulp.task('style-test', function() {
+});
+
+
+/**
+ * Task: JS Scripts
+ * ========================
+ * DEPRECATION WARNING!
+ * The Gulp Concat plugin will be removed in future versions as Browserfiy matures for use with Gulp.
+ */
+
+gulp.task('scripts', function () {
+    return gulp.src(js_order)
+        .pipe(plugins.jshint('.jshintrc'))
+        .pipe(plugins.jshint.reporter('default'))
+        .pipe(plugins.concat(js_final + '.js'))
+        .pipe(gulp.dest(dir_js))
+        .pipe(plugins.rename({
+            suffix: '.min'
+        }))
+        .pipe(plugins.uglify())
+        .pipe(gulp.dest(dir_js))
+        .pipe(reload({stream:true, once:true}));
+});
+
+/**
+ * Task: JS Standalone
+ * ========================
+ * Outputs files that are not concatenated
+ */
+
+gulp.task('scripts-standalone', function () {
+    return gulp.src([dir_src_js_standalone + '*.js'])
+        .pipe(gulp.dest(dir_js))
+        .pipe(plugins.rename({
+            suffix: '.min'
+        }))
+        .pipe(plugins.uglify())
+        .pipe(gulp.dest(dir_js))
+        .pipe(reload({stream:true, once:true}));
 });
 
 /**
@@ -64,30 +133,13 @@ gulp.task('plugins', function () {
             suffix: '.min'
         }))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest(dir_js));
-});
-
-/**
- * Task: JS Scripts
- * ========================
- */
-
-gulp.task('scripts', function () {
-    return gulp.src([dir_src_js + '*.js', dir_src_js + 'functions.js'])
-        .pipe(plugins.jshint('.jshintrc'))
-        .pipe(plugins.jshint.reporter('default'))
-        .pipe(plugins.concat(js_final + '.js'))
-        .pipe(gulp.dest(dir_js))
-        .pipe(plugins.rename({
-            suffix: '.min'
-        }))
-        .pipe(plugins.uglify())
         .pipe(gulp.dest(dir_js))
         .pipe(reload({stream:true, once:true}));
 });
 
+
 /**
- * Images
+ * Task: Images
  * ========================
  */
 
@@ -137,23 +189,36 @@ gulp.task('bower-packages', function () {
 
     return merge(
 
-        // Normalize
-        gulp.src([dir_bower + 'normalize.css/normalize.css'])
-            .pipe(plugins.rename('_base_normalize.scss'))
-            .pipe(gulp.dest(dir_scss_vendor)), // Copies to src/scss
-
         // Animate.css
         gulp.src([dir_bower + 'animate.css/animate.css'])
             .pipe(plugins.rename('_animate.scss'))
             .pipe(gulp.dest(dir_scss_vendor)), // Copies to src/scss
 
+        // Conditionizr.js
+        gulp.src([dir_bower + 'conditionizr/dist/conditionizr.js'])
+            .pipe(gulp.dest(dir_src_js)), // Copies to src/js
+
         // Move Font Awesome Fonts
         gulp.src(dir_bower + 'Font-Awesome/fonts/**/*.*', ['clean'])
-            .pipe(gulp.dest(dir_assets + 'fonts')), // Copies to src/scss
+            .pipe(gulp.dest(dir_assets + 'fonts')), // Copies to fonts
 
         // Move Font Awesome SCSS
         gulp.src(dir_bower + 'Font-Awesome/scss/**/*.*', ['clean'])
-            .pipe(gulp.dest(dir_scss_vendor + 'font-awesome')) // Copies to src/scss
+            .pipe(gulp.dest(dir_scss_vendor + 'font-awesome')), // Copies to src/scss
+
+        // Modernizr
+        gulp.src([dir_bower + 'modernizr/modernizr.js'])
+            .pipe(gulp.dest(dir_src_js)), // Copies to src/js
+
+        // Normalize
+        gulp.src([dir_bower + 'normalize.css/normalize.css'])
+            .pipe(plugins.rename('_base_normalize.scss'))
+            .pipe(gulp.dest(dir_scss_vendor)), // Copies to src/scss
+
+        // WOW.js
+        gulp.src([dir_bower + 'WOW/dist/wow.js'])
+            .pipe(gulp.dest(dir_src_js)) // Copies to src/js
+
     );
 
 });
@@ -194,7 +259,7 @@ gulp.task('watch', function() {
         https: false
     });
 
-    gulp.watch(dir_scss + '*.scss', ['styles']);
+    gulp.watch(dir_scss + '**/*.scss', ['styles']);
     gulp.watch(dir_src_js + '**/*.js', ['plugins', 'scripts']);
     gulp.watch(dir_src_img + '**/*', ['images']);
     gulp.watch('**/*.php', ['reload']);
@@ -205,4 +270,4 @@ gulp.task('watch', function() {
  * ========================
  */
 
-gulp.task('default', ['styles', 'plugins', 'scripts', 'images', 'clean', 'watch']);
+gulp.task('default', ['styles', 'plugins', 'scripts', 'scripts-standalone', 'images', 'clean', 'watch']);

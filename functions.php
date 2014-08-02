@@ -8,9 +8,20 @@ define( 'CHILD_THEME_URL', 'http://www.aaronmazade.com/' );
 define( 'CHILD_THEME_VERSION', '2.0.1' );
 
 //* Enqueue Scripts
-add_action( 'wp_enqueue_scripts', 'ar_enqueue_script' );
+add_action( 'wp_enqueue_scripts', 'ar_enqueue_script', 2 );
 function ar_enqueue_script() {
     wp_enqueue_script( 'main', get_bloginfo( 'stylesheet_directory' ) . '/assets/js/main.min.js', array( 'jquery' ), '1.0.0' );
+    wp_enqueue_script( 'plugins', get_bloginfo( 'stylesheet_directory' ) . '/assets/js/main-plugins.min.js', array( 'jquery' ), '1.0.0' );
+}
+
+//* Remove default style.css
+remove_action('genesis_meta', 'genesis_load_stylesheet');
+
+//* Enqueue Styles
+add_action( 'wp_enqueue_scripts', 'ar_add_styles', 15 );
+function ar_add_styles() {
+    wp_register_style('ar-style', get_bloginfo( 'stylesheet_directory' ) . '/style.min.css', false, '1.0.0');
+    wp_enqueue_style('ar-style');
 }
 
 //* Enqueue Lato Google font
@@ -54,16 +65,17 @@ function sp_footer_creds_filter( $creds ) {
 
 }
 
-/* Functions for conditional loading
---------------------------------------------- */
+/**
+ * Functions for conditional loading
+ * --------------------------------------------- */
 
-//* Initialize WOW.js
-//* -------------------------------------
-//* Initialize WOW.js
+/**
+ * Initialize WOW.js
+ * --------------------------------------------- */
 add_action('genesis_after_footer','ar_init_wowjs', 30 );
 function ar_init_wowjs() {
 	?>
-	<script>
+	<script type="text/javascript">
 
         /**
          * WOW animate.css if transitions are supported
@@ -76,5 +88,12 @@ function ar_init_wowjs() {
 	<?php
 }
 
-
-
+add_action('wp_enqueue_scripts','ar_globals_for_js', 1);
+function ar_globals_for_js() {
+    ?>
+    <script type="text/javascript">
+        // Passes the current URL to the theme directory into JS
+        var templateDir = "<?php echo get_bloginfo( 'stylesheet_directory' ); ?>" + "/";
+    </script>
+    <?php
+}

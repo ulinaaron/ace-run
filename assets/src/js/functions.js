@@ -20,3 +20,17 @@ function supportsTransitions() {
 
     return false;
 }
+
+/**
+ * Conditionizr
+ */
+
+conditionizr.add('chrome', function () {
+  return !!window.chrome && /google/i.test(navigator.vendor);
+});
+
+conditionizr.add('ie8', function () {
+  return (Function('/*@cc_on return (@_jscript_version > 5.7 && !/^(9|10)/.test(@_jscript_version)); @*/')());
+});
+
+conditionizr.polyfill(templateDir + 'assets/js/rem.js', ['chrome']);

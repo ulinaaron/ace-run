@@ -1,20 +1,6 @@
 // THEME VARIABLES
 // ---------------------------------------------
 
-// MISC
-// -------------------------
-
-// Borders
-$base-border-color: $color-light;
-$base-border: 1px solid $base-border-color;
-
-$color-wp-edit-link: $color-alert;
-$global-radius: 6px;
-
-// Sizes
-$base-spacing: $base-line-height * 1em;
-$base-z-index: 0;
-
 // THEME COLORS
 // -------------------------
 
@@ -40,9 +26,9 @@ $color-darkest: #2b303b;
 $color-body-bg: $color-light;
 $color-body-text: $color-darkest;
 
-$color-header-bg: $color-darker;
-$color-header-text: $color-lightest;
-$color-header-subheader: $color-lighter;
+$color-header-bg: $color-lightest;
+$color-header-text: $color-dark;
+$color-header-subheader: $color-medium;
 
 $color-entry-bg: $color-lightest;
 $color-entry-text: $color-dark;
@@ -73,6 +59,7 @@ $font-family-body: $font-family-primary;
 $font-size-base-px: 16px;
 $font-size-base: $font-size-base-px;
 $font-size-base-em: 1.6em; // Bug fix for browsers making font twice the size after random refreshing
+$em-base: 10px; // Necessary to align the Bourbon rem() function with internal mixins.
 
 $font-size-micro: 10px;
 $font-size-tiny: 12px;
@@ -98,9 +85,24 @@ $header-line-height: 1.25;
 
 // LINKS
 // -------------------------
-$link-color: $color-primary;
+$link-color: $color-alert;
 $link-color-hover: darken($link-color, 20);
 $link-transitions: true;
+
+
+// MISC
+// -------------------------
+
+// Borders
+$base-border-color: $color-light;
+$base-border: 1px solid $base-border-color;
+
+$color-wp-edit-link: $color-alert;
+$global-radius: 6px;
+
+// Sizes
+$base-spacing: $base-line-height * 1em;
+$base-z-index: 0;
 
 // BUTTONS
 // -------------------------
@@ -111,17 +113,21 @@ $button-base-bg-hover: $color-dark;
 $button-base-link: $color-lightest;
 $button-base-link-hover: $color-lightest;
 
+$button-radius: $global-radius;
+
 // FORMS
 // -------------------------
 
 $form-border-color: $base-border-color;
 $form-border-color-hover: darken($base-border-color, 10);
 $form-border-color-focus: $color-info;
-$form-border-radius: $global-radius
+$form-border-radius: $global-radius;
 $form-box-shadow: inset 0 1px 3px rgba(black,0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
 $form-font-size: $font-size-base;
 $form-font-family: $font-family-primary;
+$form-placeholder-color-text: $color-darkest;
+$form-color-text: $color-darker;
 
 // NAVIGATION
 // -------------------------
@@ -129,10 +135,10 @@ $form-font-family: $font-family-primary;
 $nav-font-family: $font-family-primary;
 
 //Nav Primary
-$color-nav-link: $color-lightest;
+$color-nav-link: $color-medium;
 $color-nav-link-hover: $color-darkest;
 
-$color-nav-primary-bg: darken($color-header-bg, 10);
+$color-nav-primary-bg: $color-dark;
 $color-nav-primary-link: $color-light;
 $color-nav-primary-link-hover: $color-secondary;
 
@@ -153,9 +159,14 @@ $color-nav-secondary-sub-link: $color-nav-secondary-link;
 $color-nav-secondary-sub-link-hover: $color-nav-secondary-link-hover;
 
 
-// Nav Secondary
-$color-nav-header-link: $color-lightest;
+// Nav Header
+$color-nav-header-link: $color-medium;
 $color-nav-header-link-hover: $color-secondary;
+
+// -- Header Sub Navigation
+$color-nav-header-sub-bg: $color-lighter;
+$color-nav-header-sub-link: $color-light;
+$color-nav-header-sub-link-hover: $color-nav-header-link-hover;
 
 // PAGINATION
 // -------------------------
@@ -175,6 +186,11 @@ $color-tag-link-hover: $color-tag-link;
 // FOOTER
 // -------------------------
 
+$sidebar-color-text: $color-darker;
+
+// FOOTER
+// -------------------------
+
 // Footer Widgets
 $color-footer-widgets-bg: $color-darkest;
 $color-footer-widgets-text: $color-lighter;
@@ -183,16 +199,37 @@ $color-footer-widget-link: $color-secondary;
 $color-footer-widget-link-hover: $color-primary;
 
 // Copyright / Credits
-$color-footer-bg: $color-medium;
+$color-footer-bg: $color-darkest;
 $color-footer-text: $color-lightest;
+
+// SCREENS / DEVICES / BREAKPOINTS
+// -------------------------
+$column-prefix: 'column';
+
+$screen-micro: 320px;
+$screen-tiny: 480px;
+$screen-small: 640px;
+$screen-medium: 800px;
+$screen-large: 960px;
+$screen-xl: 1280px;
+
+$screen-micro-up: new-breakpoint(min-width $screen-micro 1);
+$screen-tiny-up: new-breakpoint(min-width $screen-tiny 1);
+$screen-small-up: new-breakpoint(min-width $screen-small 6);
+$screen-medium-up: new-breakpoint(min-width $screen-medium 12);
+$screen-large-up: new-breakpoint(min-width $screen-large 12);
+$screen-xl-up: new-breakpoint(min-width $screen-large 12);
 
 // NEAT GRID
 // -------------------------
-$medium-screen: em(640);
-$large-screen: em(860);
+$visual-grid: true;
+$max-width: rem(1200);
 
-$medium-screen-up: new-breakpoint(min-width $medium-screen 4);
-$large-screen-up: new-breakpoint(min-width $large-screen 8);
+// BLOCKQUOTE
+// -------------------------
+
+// $blockquote-font-family: $base-font-family-alternative;
+// $blockquote-border-left: 4px solid $color-lighter;
 
 // Font Awesome
 // -------------------------
@@ -203,8 +240,12 @@ $fa-border-color:     $color-medium;
 $fa-inverse:          $color-light;
 $fa-li-width:         (30em / 14) ;
 
-// BLOCKQUOTE
+// Genesis ENews Widget
 // -------------------------
 
-// $blockquote-font-family: $base-font-family-alternative;
-// $blockquote-border-left: 4px solid $color-lighter;
+$enews-color-bg: $color-dark;
+$enews-color-heading: $color-lightest;
+$enews-color-text: $color-lighter;
+$enews-subheader-font-size: $font-size-medium;
+$enews-post-font-size: $font-size-tiny;
+

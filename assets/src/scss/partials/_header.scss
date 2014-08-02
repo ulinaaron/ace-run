@@ -6,17 +6,16 @@ Site Header
 }
 
 .site-header .wrap {
-    @include rem(padding, 20px 0);
+    @include rem(padding, 30px 0 30px);
 }
 
 /* Title Area
 --------------------------------------------- */
 .title-area {
     float: left;
-    font-family: Lato, sans-serif;
+    font-family: $font-family-primary;
     font-weight: 700;
-    padding: 16px 0;
-    padding: 1.6rem 0;
+    padding: 0;
     width: 320px;
 }
 
@@ -25,11 +24,9 @@ Site Header
 }
 
 .site-title {
-    font-size: 28px;
-    font-size: 2.8rem;
+    @include rem(font-size, $font-size-xxxl);
     line-height: 1;
-    margin: 0 0 8px;
-    margin: 0 0 0.8rem;
+    @include rem(margin, 0 0 8px);
     text-transform: uppercase;
 }
 
@@ -75,8 +72,10 @@ Site Header
 --------------------------------------------- */
 
 .site-header .widget-area {
-    float: right;
+    display: block;
     text-align: right;
+
+    float: left;
     width: 800px;
 }
 

@@ -105,10 +105,23 @@ Site Navigation
     margin-top: -55px;
 }
 
+/* Omega fix navigation items
+--------------------------------------------- */
+
+.nav-primary .menu-item,
+.nav-secondary .menu-item {
+    &:first-child a {
+        padding-left: 0;
+    }
+    &:last-child a {
+        padding-right: 0;
+    }
+}
+
 /* Primary Navigation
 --------------------------------------------- */
 .nav-primary {
-    background-color: $color-nav-primary-bg
+    background-color: $color-nav-primary-bg;
 }
 
 .nav-primary a {
@@ -153,9 +166,19 @@ Site Navigation
 
 .nav-header a {
     color: $color-nav-header-link;
+    @include rem(padding, 0 20px);
 }
 
 .nav-header a:hover,
 .nav-header .current-menu-item > a {
     color: $color-nav-header-link-hover;
 }
+
+.nav-header .sub-menu a:hover {
+    color: $color-nav-header-link-hover;
+}
+
+.nav-header .sub-menu a {
+    background-color: $color-nav-header-sub-bg;
+}
+
