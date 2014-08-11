@@ -356,7 +356,7 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
-  background-color: #c0c5ce;
+  background-color: #eff1f5;
   color: #2b303b;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -445,7 +445,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 16px;
-  margin: 0 0 1.6rem; }
+  margin: 0 0 1.6rem;
+  -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
+  -ms-font-feature-settings: 'liga';
+  font-feature-settings: 'liga'; }
 
 h1, .font-size-huge {
   font-size: 32px;
@@ -1222,9 +1226,9 @@ Site Navigation
 
 /* Omega fix navigation items
 --------------------------------------------- */
-.nav-primary .menu-item:first-child a, .nav-secondary .menu-item:first-child a {
+.nav-primary > .menu .menu-item:first-child a, .nav-secondary > .menu .menu-item:first-child a {
   padding-left: 0; }
-.nav-primary .menu-item:last-child a, .nav-secondary .menu-item:last-child a {
+.nav-primary > .menu .menu-item:last-child a, .nav-secondary > .menu .menu-item:last-child a {
   padding-right: 0; }
 
 /* Primary Navigation

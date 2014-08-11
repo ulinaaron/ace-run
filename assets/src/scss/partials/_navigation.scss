@@ -108,8 +108,8 @@ Site Navigation
 /* Omega fix navigation items
 --------------------------------------------- */
 
-.nav-primary .menu-item,
-.nav-secondary .menu-item {
+.nav-primary > .menu .menu-item,
+.nav-secondary > .menu .menu-item {
     &:first-child a {
         padding-left: 0;
     }

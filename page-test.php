@@ -23,15 +23,6 @@ function ace_add_body_class( $classes ) {
 add_action('genesis_before_loop','do_test_content');
 function do_test_content() {
 ?>
-    <div class="column-4">
-        blah
-    </div>
-    <div class="column-4">
-        blah blah
-    </div>
-    <div class="column-4">
-        blah blah
-    </div>
 <?php
 }
 

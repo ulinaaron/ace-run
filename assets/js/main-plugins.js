@@ -19,6 +19,7 @@ jQuery(document).ready(function ($) {
 });
 
 
+
 jQuery(document).ready(function ($) {
     $(".js-vertical-tab-content").hide();
     $(".js-vertical-tab-content:first").show();

@@ -54,8 +54,8 @@ h6 {
     font-family: $heading-font-family;
     font-weight: 700;
     line-height: 1.2;
-    margin: 0 0 16px;
-    margin: 0 0 1.6rem;
+    @include rem(margin, 0 0 16px);
+    @include font-feature-settings('liga');
 }
 
 h1,
