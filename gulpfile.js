@@ -63,13 +63,6 @@ gulp.task('styles', function () {
         .pipe(plugins.autoprefixer('last 2 versions', 'ie 9', 'ios 6', 'android 4'))
         .pipe(plugins.bless())
         .pipe(gulp.dest(dir_css))
-        .pipe(plugins.rename({
-        suffix: '.min'
-        }))
-        .pipe(plugins.minifyCss({
-            keepSpecialComments: 1
-        }))
-        .pipe(gulp.dest(build))
         .pipe(reload({stream:true}));
 });
 
